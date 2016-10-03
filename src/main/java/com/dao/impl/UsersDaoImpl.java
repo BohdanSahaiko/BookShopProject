@@ -4,7 +4,7 @@ package com.dao.impl;
 import com.dao.UsersDao;
 import com.model.Books;
 import com.model.Users;
-import com.util.HibernateUtil;
+import com.util.SessionClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,26 +18,26 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Autowired
-    private HibernateUtil hibernateUtil;
+    private SessionClass sessionClass;
 
     @Override
     public List<Users> getAllUsers() {
-        return hibernateUtil.fetchAll(Users.class);
+        return sessionClass.fetchAll(Users.class);
     }
 
     @SuppressWarnings("unchecked")
     public Users findByUserName(String username) {
-        return hibernateUtil.findByUserName(username);
+        return sessionClass.findByUserName(username);
     }
 
     @Override
     public void addUser(String username, String password) {
-        hibernateUtil.addUser(username,password);
+        sessionClass.addUser(username,password);
     }
 
     @Override
     public void addBook(Users user ,Books book) {
-        hibernateUtil.addBookToUser(user ,book);
+        sessionClass.addBookToUser(user ,book);
     }
 
 }

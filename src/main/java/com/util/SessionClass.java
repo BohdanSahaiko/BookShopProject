@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class HibernateUtil {
+public class SessionClass {
 
     @Autowired
     private SessionFactory sessionFactory;
